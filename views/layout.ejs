@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<!--Página modelo para todas las ventanas que se muestren, 
+	en la que sólo variará el bloque <section>-->
+<html lang="en">
+<head>
+	<title>Quiz</title>
+	<meta charset="UTF-8">
+	<link rel='stylesheet' href="/stylesheets/style.css"/>
+</head>
+
+<body>
+<div id="page-wrap">
+	<header class="main" id="h1">
+		<h2>Quiz: el juego de las preguntas</h2>
+	</header>
+
+	<nav class="main" id="n1" role="navigation">
+		<span><a href="/">Inicio</a></span>
+		<span><a href="/quizes/question">Preguntas</a></span>
+	</nav>
+
+	<!-- body será sustituido por la vista que se renderice en ese momento (render), gracias al middleware que hemos instalado e importado, express-partials-->
+	<section class="main" id="s1">
+		<%- body %>	
+	</section>
+
+	<footer class="main" id="f1">
+		<a href="http://es.wikipedia.org/wiki/Quiz">¿Qué es un Quiz?</a>
+	</footer>
+</div>
+</body>
+</html>
