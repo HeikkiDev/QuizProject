@@ -5,10 +5,15 @@ exports.question = function(req, res){
 
 //GET /quizes/answer
 exports.answer = function(req, res){
-	if(req.query.respuesta === 'Roma'){
+	if(req.query.respuesta === 'Roma' || req.query.respuesta === 'roma'){
 		res.render('quizes/answer', {respuesta: 'Correcto'});
 	}
 	else{
 		res.render('quizes/answer', {respuesta: 'Incorrecto'});
 	}
 };
+
+//GET /author
+exports.author = function(req,res){
+	res.render('author');
+}
