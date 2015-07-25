@@ -9,6 +9,12 @@
 <body>
 	<h2>Quiz: el juego de las preguntas</h2>
 	<br>
+	<form method="get" action="/quizes">
+		Buscar:
+		<input type="text" name="search" value="Busqueda" onfocus="if (this.value == 'Busqueda') {this.value = '';}"/>
+		<input type="submit" value="Enviar"/>
+	</form>
+	<br>
 	<table>
 	<% var i; for (i=0; i < quizes.length; i++){ %>
 		<tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>

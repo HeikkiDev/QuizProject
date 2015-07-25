@@ -16,9 +16,19 @@ exports.load = function(req, res, next, quizId) {
 
 //GET /quizes
 exports.index = function(req, res) {
-	models.Quiz.findAll().then(function(quizes){
-		res.render('quizes/index.ejs', {quizes : quizes});
-	}).catch(function(error){ next(error); })
+	if(req.query.search){
+		var str = req.query.search;
+		str = "%" + str.trim().replace(" ","%") + "%";
+		// Pasamos a lower las cadenas porque Postgres no es sensitive case
+		models.Quiz.findAll({where: ["lower(pregunta) like ?", str.toLowerCase()]}).then(function(quizes){
+			res.render('quizes/index.ejs', {quizes : quizes});
+		}).catch(function(error){ next(error); })
+	}
+	else{
+		models.Quiz.findAll().then(function(quizes){
+			res.render('quizes/index.ejs', {quizes : quizes});
+		}).catch(function(error){ next(error); })
+	}
 };
 
 //GET /quizes/:id
