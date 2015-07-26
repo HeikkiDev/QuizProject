@@ -1,12 +1,3 @@
-<!DOCTYPE>
-<html>
-
-<head>
-	<title>Quiz</title>
-	<meta charset="UTF-8">
-	<link rel='stylesheet' href="/stylesheets/style.css"/>
-</head>
-<body>
 	<h2>Quiz: el juego de las preguntas</h2>
 	<br>
 	<form method="get" action="/quizes">
@@ -19,8 +10,6 @@
 	<% var i; for (i=0; i < quizes.length; i++){ %>
 		<tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
 	<% } %>
-	</table>
-	
-</body>
+	</table><p>
+	<a href="/quizes/new"><button type="button">Crear pregunta</button></a>
 
-</html>
