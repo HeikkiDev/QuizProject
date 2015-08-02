@@ -13,4 +13,8 @@ a {
 section > div { padding: 20px; }
 header, nav, section, footer { background: #eee; text-align: center;}
 nav span {margin: 0px 10px 0px 0px;}
+button {border-radius: 25px; background-color:#FAFAFA;}
+button:hover {background-color:#D8D8D8;}
+input[type="submit"] {border-radius: 25px; background-color:#FAFAFA;}
+input[type="submit"]:hover {background-color:#D8D8D8;}
 #ErrorMsgs	{color: #f61; font-size: smaller}
