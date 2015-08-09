@@ -1,20 +1,12 @@
-<!DOCTYPE>
-<html>
-
-<head>
-	<title>Quiz</title>
-	<meta charset="UTF-8">
-	<link rel='stylesheet' href="/stylesheets/style.css"/>
-</head>
-<body>
-	<h2>Quiz: el juego de las preguntas</h2>
-	<br>
-	<form method="get" action="/quizes/<%= quiz.id %>/answer">
-		Pregunta: <%= quiz.pregunta %> <p><br>
-		<input type="text" name="respuesta" value="Responda aquí" onfocus="if (this.value == 'Responda aquí') {this.value = '';}"/>
-		<input type="submit" value="Enviar"/>
-	</form>
+<form method="get" action="/quizes/<%= quiz.id %>/answer">
+	Pregunta: <%= quiz.pregunta %> <p><br>
+	<input type="text" name="respuesta" value="Responda aquí" onfocus="if (this.value == 'Responda aquí') {this.value = '';}"/>
+	<input type="submit" value="Enviar"/>
+</form>
 	
-</body>
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
 
-</html>
+<p><strong>Comentarios:</strong></p>
+<% for(index in quiz.Comments){ %>
+		<p>- <%=quiz.Comments[index].texto%></p>
+<% } %>
