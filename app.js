@@ -40,6 +40,32 @@ app.use(function(req,res,next){
 	next();
 });
 
+//Auto-logout
+app.use(function(req,res,next){
+    req.session.caducity = 120000; //120 segundos
+
+    if(req.session.user){
+
+        if(!req.session.curTimeTransaction){ //si no se ha guardado aún
+            req.session.curTimeTransaction = (new Date()).getTime();
+        }
+        else{ //si ya hay hora de transacción guardada
+            console.log('CURTIME_:'+req.session.curTimeTransaction);
+            if((new Date()).getTime() - req.session.curTimeTransaction > req.session.caducity){
+                delete req.session.user;  //eliminar sesión
+                delete req.session.curTimeTransaction;
+                res.render('sessions/new', {errors: [{"message": "Sesión caducada, acceda de nuevo"}]});
+            }
+            else{ 
+                //actualiza la hora de la última transacción
+                req.session.curTimeTransaction = (new Date()).getTime();
+            }
+        }
+    }
+
+    next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
